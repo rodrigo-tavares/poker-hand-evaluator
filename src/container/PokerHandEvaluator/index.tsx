@@ -1,3 +1,8 @@
+import GameHistory from "@/components/GameHistory";
+import HandSelector from "@/components/HandSelector";
+import NotationGuide from "@/components/NotationGuide";
+import usePokerEvaluator from "@/hooks/usePokerEvaluator";
+import { Hand, HandResult } from "@/types/pokerHands";
 import {
   Button,
   CloseButton,
@@ -9,12 +14,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import HandSelector from "./components/HandSelector";
-import usePokerEvaluator from "./hooks/usePokerEvaluator";
-import { Hand, HandResult } from "./types/pokerHands";
-import NotationGuide from "./components/NotationGuide";
 
-export default function Page() {
+export default function PokerHandEvaluator() {
   const [hand1, setHand1] = useState<Hand[]>([]);
   const [hand2, setHand2] = useState<Hand[]>([]);
   const [history, setHistory] = useState<HandResult[]>([]);
@@ -103,43 +104,7 @@ export default function Page() {
         </Flex>
       )}
 
-      {history.length > 0 && (
-        <Flex flexDir={"column"} gap={2} mt={6} w="80%">
-          <Heading size="md" mb={2}>
-            Game History
-          </Heading>
-          {history.map((game, index) => (
-            <Flex
-              flexDir={"column"}
-              gap={4}
-              key={index}
-              borderWidth="1px"
-              p={4}
-              borderRadius="md"
-              mb={2}
-            >
-              <Text>
-                Game {index + 1} -{" "}
-                <Highlight
-                  query={["Player 1", "Player 2"]}
-                  styles={{
-                    color: game.winner === "hand1" ? "blue.500" : "red.500",
-                  }}
-                >
-                  {game.winner === "tie"
-                    ? "It's a Tie!"
-                    : `Winner: ${
-                        game.winner === "hand1" ? "Player 1" : "Player 2"
-                      }`}
-                </Highlight>
-              </Text>
-              <Text>
-                Player 1: {game.hand1Rank} | Player 2: {game.hand2Rank}
-              </Text>
-            </Flex>
-          ))}
-        </Flex>
-      )}
+      {history.length > 0 && <GameHistory history={history} />}
     </VStack>
   );
 }
