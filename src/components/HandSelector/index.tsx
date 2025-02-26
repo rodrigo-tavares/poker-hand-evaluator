@@ -2,15 +2,11 @@ import { Box, Button, Flex, IconButton, Input, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import PokerCard from "../PokerCard";
-import {
-  Hand,
-  HandSelectorPropTypes,
-  ranks,
-  SuitMap,
-  suits,
-} from "@/types/pokerHands";
 import { LuBadgeHelp } from "react-icons/lu";
 import { PiCheck } from "react-icons/pi";
+import { Hand, HandSelectorPropTypes } from "@/types/HandTypes";
+import { SuitMap, suits } from "@/types/SuitTypes";
+import { ranks } from "@/types/RankTypes";
 
 const HandSelector = ({
   hand,
@@ -33,7 +29,7 @@ const HandSelector = ({
     const parsedHandInput = handInput
       .trim()
       .split(" ")
-      .map<Hand>((card) => {
+      .map((card) => {
         const suitKey = card.slice(-1) as keyof typeof SuitMap;
 
         return {
@@ -42,7 +38,7 @@ const HandSelector = ({
         };
       });
 
-    setHand(parsedHandInput);
+    setHand(parsedHandInput as Hand[]);
     setIsRevealed(true);
     setHandInput("");
   };

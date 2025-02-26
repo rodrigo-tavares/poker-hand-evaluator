@@ -2,7 +2,7 @@ import GameHistory from "@/components/GameHistory";
 import HandSelector from "@/components/HandSelector";
 import NotationGuide from "@/components/NotationGuide";
 import usePokerEvaluator from "@/hooks/usePokerEvaluator";
-import { Hand, HandResult } from "@/types/pokerHands";
+import { Hand, HandResult } from "@/types/HandTypes";
 import {
   Button,
   CloseButton,

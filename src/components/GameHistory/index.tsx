@@ -1,4 +1,4 @@
-import { HandResult } from "@/types/pokerHands";
+import { HandResult } from "@/types/HandTypes";
 import { Flex, Heading, Highlight, Text } from "@chakra-ui/react";
 
 type GameHistoryPropTypes = {

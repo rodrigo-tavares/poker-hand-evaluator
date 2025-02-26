@@ -1,4 +1,4 @@
-import { Hand, HandResult } from "@/types/pokerHands";
+import { Hand, HandResult } from "@/types/HandTypes";
 import { useMemo } from "react";
 
 const getHandRank = (hand: Hand[]): string => {

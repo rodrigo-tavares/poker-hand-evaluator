@@ -2,7 +2,8 @@ import { Box, Text } from "@chakra-ui/react";
 import { JSX } from "react";
 import { GiSpades, GiHearts, GiDiamonds, GiClubs } from "react-icons/gi";
 import { motion } from "framer-motion";
-import { Suit, PokerCardPropTypes } from "@/types/pokerHands";
+import { PokerCardPropTypes } from "@/types/PokerCardTypes";
+import { Suit } from "@/types/SuitTypes";
 
 const suitIcons: Record<Suit, JSX.Element> = {
   spade: <GiSpades />,
