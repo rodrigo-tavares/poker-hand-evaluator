@@ -1,6 +1,17 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
+import { useMemo } from "react";
 
 const NotationGuide = () => {
+  const cardNotations = useMemo(
+    () => [
+      { symbol: "♠ (S)", suit: "Spades", example: "AS (Ace of Spades)" },
+      { symbol: "♥ (H)", suit: "Hearts", example: "10H (10 of Hearts)" },
+      { symbol: "♦ (D)", suit: "Diamonds", example: "7D (7 of Diamonds)" },
+      { symbol: "♣ (C)", suit: "Clubs", example: "4C (4 of Clubs)" },
+    ],
+    []
+  );
+
   return (
     <Box w="100%">
       <Heading size="md" mb={2}>
@@ -24,26 +35,13 @@ const NotationGuide = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td style={{ padding: "8px" }}>♠ (S)</td>
-            <td style={{ padding: "8px" }}>Spades</td>
-            <td style={{ padding: "8px" }}>AS (Ace of Spades)</td>
-          </tr>
-          <tr>
-            <td style={{ padding: "8px" }}>♥ (H)</td>
-            <td style={{ padding: "8px" }}>Hearts</td>
-            <td style={{ padding: "8px" }}>10H (10 of Hearts)</td>
-          </tr>
-          <tr>
-            <td style={{ padding: "8px" }}>♦ (D)</td>
-            <td style={{ padding: "8px" }}>Diamonds</td>
-            <td style={{ padding: "8px" }}>7D (7 of Diamonds)</td>
-          </tr>
-          <tr>
-            <td style={{ padding: "8px" }}>♣ (C)</td>
-            <td style={{ padding: "8px" }}>Clubs</td>
-            <td style={{ padding: "8px" }}>4C (4 of Clubs)</td>
-          </tr>
+          {cardNotations.map(({ symbol, suit, example }) => (
+            <tr key={symbol}>
+              <td style={{ padding: "8px" }}>{symbol}</td>
+              <td style={{ padding: "8px" }}>{suit}</td>
+              <td style={{ padding: "8px" }}>{example}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Box>
