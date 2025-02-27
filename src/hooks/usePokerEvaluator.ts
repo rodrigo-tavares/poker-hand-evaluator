@@ -54,7 +54,7 @@ const usePokerEvaluator = (hand1: Hand[], hand2: Hand[]): HandResult => {
     const hand2Score = rankingOrder.indexOf(hand2Rank);
 
     let winner: "hand1" | "hand2" | "tie" | undefined = undefined;
-    if (hand1.length && hand2.length) {
+    if (hand1.length === 5 && hand2.length === 5) {
       if (hand1Score > hand2Score) winner = "hand1";
       else if (hand2Score > hand1Score) winner = "hand2";
       else winner = "tie";

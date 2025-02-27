@@ -10,6 +10,7 @@ export interface HandResult {
 export type Hand = {
   suit: Suit;
   rank: Rank;
+  isRevealed?: boolean;
 };
 
 export type HandSelectorPropTypes = {

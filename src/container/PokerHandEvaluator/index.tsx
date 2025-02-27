@@ -1,11 +1,9 @@
 import GameHistory from "@/components/GameHistory";
 import HandSelector from "@/components/HandSelector";
-import NotationGuide from "@/components/NotationGuide";
 import usePokerEvaluator from "@/hooks/usePokerEvaluator";
 import { Hand, HandResult } from "@/types/HandTypes";
 import {
   Button,
-  CloseButton,
   Flex,
   Heading,
   Highlight,
@@ -51,7 +49,12 @@ export default function PokerHandEvaluator() {
           hand!
         </Text>
       </Stack>
-      <Flex gap={8} direction={"row"} justifyContent={"space-around"}>
+      <Flex
+        gap={8}
+        direction={"row"}
+        justifyContent={"space-around"}
+        flexWrap={"wrap"}
+      >
         <HandSelector
           hand={hand1}
           setHand={setHand1}
@@ -67,19 +70,6 @@ export default function PokerHandEvaluator() {
           setShowHelp={() => setShowGuide(!showGuide)}
         />
       </Flex>
-
-      {showGuide ? (
-        <Flex flexDir={"row"}>
-          <NotationGuide />
-
-          <CloseButton
-            onClick={() => setShowGuide(!showGuide)}
-            alignSelf={"start"}
-            variant={"ghost"}
-            size={"sm"}
-          />
-        </Flex>
-      ) : null}
 
       {winner && (
         <Flex

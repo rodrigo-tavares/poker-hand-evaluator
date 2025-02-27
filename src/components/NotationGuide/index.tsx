@@ -2,7 +2,7 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 
 const NotationGuide = () => {
   return (
-    <Box mt={6} w="100%">
+    <Box w="100%">
       <Heading size="md" mb={2}>
         Card Notation Guide
       </Heading>
