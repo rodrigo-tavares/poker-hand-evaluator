@@ -17,8 +17,6 @@ export default function PokerHandEvaluator() {
   const [hand1, setHand1] = useState<Hand[]>([]);
   const [hand2, setHand2] = useState<Hand[]>([]);
   const [history, setHistory] = useState<HandResult[]>([]);
-  const [showGuide, setShowGuide] = useState<boolean>(false);
-
   const { winner, hand1Rank, hand2Rank } = usePokerEvaluator(hand1, hand2);
 
   const resetGame = () => {
@@ -60,14 +58,12 @@ export default function PokerHandEvaluator() {
           setHand={setHand1}
           label="Player 1"
           winner={winner === "hand1"}
-          setShowHelp={() => setShowGuide(!showGuide)}
         />
         <HandSelector
           hand={hand2}
           setHand={setHand2}
           label="Player 2"
           winner={winner === "hand2"}
-          setShowHelp={() => setShowGuide(!showGuide)}
         />
       </Flex>
 

@@ -18,5 +18,4 @@ export type HandSelectorPropTypes = {
   setHand: (props: Hand[]) => void;
   label: string;
   winner: boolean;
-  setShowHelp: () => void;
 };
