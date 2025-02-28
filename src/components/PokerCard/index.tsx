@@ -34,6 +34,7 @@ const PokerCard = ({ hand, isRevealed }: PokerCardPropTypes) => {
           p={2}
           position="relative"
           role="presentation"
+          data-testid="poker-card"
         >
           <Box position="absolute" top="5px" left="5px" textAlign="center">
             <Text fontSize="lg" fontWeight="bold">

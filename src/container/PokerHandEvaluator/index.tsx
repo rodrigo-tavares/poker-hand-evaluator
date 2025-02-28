@@ -74,6 +74,7 @@ export default function PokerHandEvaluator() {
           mt={4}
           alignItems={"center"}
           justifyContent={"center"}
+          data-testid="winner-message"
         >
           <Text fontSize="lg">
             Player 1: {hand1Rank} | Player 2: {hand2Rank}

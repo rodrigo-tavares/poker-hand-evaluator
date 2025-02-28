@@ -131,3 +131,16 @@ This project uses **Vitest** for unit testing.
    ```sh
    npm run test:coverage
    ```
+
+## Running E2E Tests with Cypress
+
+1. Before running the tests, ensure the application is running by executing:
+   ```sh
+   yarn dev
+   ```
+   The application should now be running at `http://localhost:5173`.
+
+2. To execute the E2E tests, use the following command:
+   ```sh
+   yarn test:e2e
+   ```

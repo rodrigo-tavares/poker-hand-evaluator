@@ -83,7 +83,11 @@ const HandSelector = ({
       >
         <PokerHandSearch hand={hand} handleHand={setHand} />
         <Text>or</Text>
-        <Button onClick={dealCards} disabled={isDealing || hand.length >= 5}>
+        <Button
+          data-testid={`deal-hand-${label}`}
+          onClick={dealCards}
+          disabled={isDealing || hand.length >= 5}
+        >
           {isDealing ? "Dealing..." : "Deal Cards"}
         </Button>
       </Flex>
