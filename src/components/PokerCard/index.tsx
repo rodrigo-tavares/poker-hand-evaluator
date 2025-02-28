@@ -33,6 +33,7 @@ const PokerCard = ({ hand, isRevealed }: PokerCardPropTypes) => {
           justifyContent="center"
           p={2}
           position="relative"
+          role="presentation"
         >
           <Box position="absolute" top="5px" left="5px" textAlign="center">
             <Text fontSize="lg" fontWeight="bold">
@@ -70,6 +71,7 @@ const PokerCard = ({ hand, isRevealed }: PokerCardPropTypes) => {
           justifyContent="center"
           p={2}
           position="relative"
+          role="presentation"
         >
           ♠️♦️ ♥️♣️
         </Box>

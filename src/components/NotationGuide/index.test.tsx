@@ -1,9 +1,9 @@
 import NotationGuide from ".";
-import { ThemeWrapper } from "@/utils/testUtils";
-import { render, screen } from "@testing-library/react";
+import { renderWithProviders } from "@/utils/testUtils";
+import { screen } from "@testing-library/react";
 
 const setup = () => {
-  render(<NotationGuide />, { wrapper: ThemeWrapper });
+  renderWithProviders(<NotationGuide />);
 };
 
 describe("NotationGuide Component", () => {

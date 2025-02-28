@@ -1,13 +1,6 @@
-import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
-import { ThemeProvider } from "next-themes";
-import { ReactNode } from "react";
+import { render } from "@testing-library/react";
+import { ThemeWrapper } from "./ThemeWrapper";
 
-interface Props {
-  children?: ReactNode;
-}
-
-export const ThemeWrapper = ({ children }: Props) => (
-  <ChakraProvider value={defaultSystem}>
-    <ThemeProvider>{children}</ThemeProvider>
-  </ChakraProvider>
-);
+export const renderWithProviders = (ui: React.ReactElement) => {
+  return render(ui, { wrapper: ThemeWrapper });
+};

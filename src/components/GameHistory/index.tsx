@@ -21,7 +21,7 @@ function GameHistory({ history }: GameHistoryPropTypes) {
           borderRadius="md"
           mb={2}
         >
-          <Text>
+          <Text role="section">
             Game {index + 1} -{" "}
             <Highlight
               query={["Player 1", "Player 2"]}
