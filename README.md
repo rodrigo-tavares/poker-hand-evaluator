@@ -4,6 +4,10 @@
 
 This project implements a Poker Hand Evaluator, which allows users to generate, evaluate, and compare poker hands. The core functionality includes a **hand selector**, **hand evaluator**, and **interactive UI components** to visualize and assess poker hands.
 
+[Preview link](https://poker-hand-evaluator.vercel.app/)
+
+![image](https://github.com/user-attachments/assets/269619f8-6575-44f4-964c-4efc29cc7db1)
+
 ## Design Decisions
 
 ### Component-Based Architecture
