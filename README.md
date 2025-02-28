@@ -1,50 +1,129 @@
-# React + TypeScript + Vite
+# Poker Hand Evaluator ♠️♥️♣️♦️
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project implements a Poker Hand Evaluator, which allows users to generate, evaluate, and compare poker hands. The core functionality includes a **hand selector**, **hand evaluator**, and **interactive UI components** to visualize and assess poker hands.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Design Decisions
 
-## Expanding the ESLint configuration
+### Component-Based Architecture
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The project is structured using a modular component-based approach, making it easy to scale and maintain. The key components include:
 
-- Configure the top-level `parserOptions` property like this:
+- **HandSelector**: Allows users to generate or manually select poker hands.
+- **PokerCard**: Displays an individual card.
+- **PokerHandSearch**: Enables manual hand selection.
+- **usePokerEvaluator**: Custom React Hook that determines the winner between two hands.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### State Management
+
+State is handled using React's `useState` and `useEffect` hooks. The **hand state** is managed in the `HandSelector` component, and evaluation logic is encapsulated in `usePokerEvaluator` to ensure separation of concerns.
+
+### Animations
+
+Framer Motion is used for smooth transitions when dealing cards, enhancing the user experience.
+
+## API Implementation
+
+### `usePokerEvaluator`
+
+This custom hook evaluates two hands and determines the winner.
+
+#### **API Signature:**
+
+```ts
+const usePokerEvaluator = (hand1: Hand[], hand2: Hand[]) => HandResult;
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### **Logic:**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. **Rank Identification:**
+   - The function `getHandRank` determines the hand’s strength based on poker rules.
+2. **Hand Comparison:**
+   - Hands are ranked using a predefined ranking order.
+   - If both hands have five cards, their ranks are compared to determine the winner.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### `HandSelector`
+
+Handles card dealing and user selection.
+
+#### **Props:**
+
+```ts
+interface HandSelectorPropTypes {
+  hand: Hand[];
+  setHand: (hand: Hand[]) => void;
+  label: string;
+  winner?: boolean;
+}
 ```
+
+#### **Features:**
+
+- Automatically deals five random cards when triggered.
+- Allows users to manually input a hand via `PokerHandSearch`.
+- Visually highlights the winning hand.
+
+## Challenges & Notable Features
+
+### 1. **Ensuring Fair Card Distribution**
+
+- Randomly generating five unique cards required handling duplicates.
+- The `dealCards` function ensures variety by selecting random suits and ranks.
+
+### 2. **Optimizing Performance**
+
+- `usePokerEvaluator` leverages `useMemo` to prevent unnecessary recalculations.
+- Framer Motion animations were tuned for smooth UI updates without lag.
+
+### 3. **Handling Edge Cases**
+
+- Prevents evaluation when either hand has fewer than five cards.
+- Handles ties gracefully and provides clear feedback in the UI.
+
+## Future Improvements
+
+- Implement tie-breaking logic for hands of the same rank.
+- Add drag-and-drop functionality for manual card selection.
+- Extend support for multiplayer poker scenarios.
+
+
+
+## Running the Project Locally
+To run the project locally, follow these steps:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/rodrigo-tavares/poker-hand-evaluator 
+   cd poker-hand-evaluator
+   ```
+
+2. Install dependencies:
+   ```sh
+   yarn install
+   ```
+
+3. Start the development server:
+   ```sh
+   yarn dev
+   ```
+   The application should now be running at `http://localhost:5173`.
+
+
+## Running Tests with Vitest
+This project uses **Vitest** for unit testing.
+
+1. Run the test suite:
+   ```sh
+   npm run test
+   ```
+
+2. Run tests in watch mode (for development):
+   ```sh
+   npm run test:watch
+   ```
+
+3. Generate a test coverage report:
+   ```sh
+   npm run test:coverage
+   ```
