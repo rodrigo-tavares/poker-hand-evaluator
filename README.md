@@ -97,18 +97,18 @@ interface HandSelectorPropTypes {
 To run the project locally, follow these steps:
 
 1. Clone the repository:
-   ```sh
+   ```bash
    git clone https://github.com/rodrigo-tavares/poker-hand-evaluator 
    cd poker-hand-evaluator
    ```
 
 2. Install dependencies:
-   ```sh
+   ```bash
    yarn install
    ```
 
 3. Start the development server:
-   ```sh
+   ```bash
    yarn dev
    ```
    The application should now be running at `http://localhost:5173`.
@@ -118,29 +118,29 @@ To run the project locally, follow these steps:
 This project uses **Vitest** for unit testing.
 
 1. Run the test suite:
-   ```sh
-   npm run test
+   ```bash
+   yarn test
    ```
 
 2. Run tests in watch mode (for development):
-   ```sh
-   npm run test:watch
+   ```bash
+   yarn test:watch
    ```
 
 3. Generate a test coverage report:
-   ```sh
-   npm run test:coverage
+   ```bash
+   yarn test:coverage
    ```
 
 ## Running E2E Tests with Cypress
 
 1. Before running the tests, ensure the application is running by executing:
-   ```sh
+   ```bash
    yarn dev
    ```
    The application should now be running at `http://localhost:5173`.
 
 2. To execute the E2E tests, use the following command:
-   ```sh
+   ```bash
    yarn test:e2e
    ```
